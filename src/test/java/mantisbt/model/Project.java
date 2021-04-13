@@ -51,48 +51,54 @@ public class Project {
         return name;
     }
 
-    public void setName(String name) {
+    public Project withName(String name) {
         this.name = name;
+        return this;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public Project withId(int id) {
         this.id = id;
+        return this;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public Project withStatus(String status) {
         this.status = status;
+        return this;
     }
 
     public String getInheritanced() {
         return inheritanced;
     }
 
-    public void setInheritanced(String inheritanced) {
+    public Project withInheritanced(String inheritanced) {
         this.inheritanced = inheritanced;
+        return this;
     }
 
     public String getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(String visibility) {
+    public Project withVisibility(String visibility) {
         this.visibility = visibility;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Project withDescription(String description) {
         this.description = description;
+        return this;
     }
 
     @Override

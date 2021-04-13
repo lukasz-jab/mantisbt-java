@@ -7,5 +7,6 @@ public class LoginTest extends TestBase {
     @Test(enabled = true)
     public void testLogin() {
         app.session().login("lukasz", "luk");
+        app.navigation().openBugReportPage();
     }
 }

@@ -1,15 +1,14 @@
 package mantisbt.appmanager;
 
+import mantisbt.model.BugReport;
 import mantisbt.model.Project;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectHelper {
-    private final WebDriver wd;
+    private WebDriver wd;
 
     public ProjectHelper(WebDriver wd) {
         this.wd = wd;
@@ -50,5 +49,16 @@ public class ProjectHelper {
     public String slice_start(String s, int startIndex) {
         if (startIndex < 0) startIndex = s.length() + startIndex;
         return s.substring(startIndex);
+    }
+
+    public void createBugReport(BugReport bug) {
+        wd.findElement(By.cssSelector("div.page-content input#summary")).sendKeys(bug.getTitle());
+        wd.findElement(By.cssSelector("div.page-content textarea#description")).sendKeys(bug.getDescription());
+
+        WebElement box = wd.findElement(By.cssSelector("div.page-content input[name=max_file_size]"));
+        ((JavascriptExecutor) wd).executeScript("arguments[0].setAttribute('value','"+bug.getFile().getAbsolutePath()+"')", box);
+//        box.sendKeys(bug.getFile().getAbsolutePath());
+        //wd.findElement(By.cssSelector("div.page-content div.dropzone.center.dz-clickable")).sendKeys(bug.getFile().getAbsolutePath());
+        wd.findElement(By.cssSelector("div.page-content input[type=submit]")).click();
     }
 }

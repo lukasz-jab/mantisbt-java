@@ -35,7 +35,7 @@ public class ApplicationManager {
         session = new SessionHelper(wd);
         navigation = new NavigationHelper(wd);
         project = new ProjectHelper(wd);
-        session.login("administrator", "root");
+//        session.login("administrator", "root");
     }
 
     public void stop() {
@@ -46,6 +46,8 @@ public class ApplicationManager {
     public SessionHelper session() {
         return session;
     }
+
+    public NavigationHelper navigation() { return navigation; }
 
     public ProjectHelper project() {
         return project;
