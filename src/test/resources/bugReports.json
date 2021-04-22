@@ -1,0 +1,23 @@
+[
+  {
+    "Title": "Bug title 1619120311",
+    "Description": "Description 1619120311",
+    "file": {
+      "path": "/home/lukasz/Devel/mantisbt-java/src/test/resources/ok.jpeg"
+    }
+  },
+  {
+    "Title": "Bug title 3238240622",
+    "Description": "Description 1619120311",
+    "file": {
+      "path": "/home/lukasz/Devel/mantisbt-java/src/test/resources/ok.jpeg"
+    }
+  },
+  {
+    "Title": "Bug title 4857360933",
+    "Description": "Description 1619120311",
+    "file": {
+      "path": "/home/lukasz/Devel/mantisbt-java/src/test/resources/ok.jpeg"
+    }
+  }
+]

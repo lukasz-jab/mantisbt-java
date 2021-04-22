@@ -51,14 +51,4 @@ public class ProjectHelper {
         return s.substring(startIndex);
     }
 
-    public void createBugReport(BugReport bug) {
-        wd.findElement(By.cssSelector("div.page-content input#summary")).sendKeys(bug.getTitle());
-        wd.findElement(By.cssSelector("div.page-content textarea#description")).sendKeys(bug.getDescription());
-
-        WebElement box = wd.findElement(By.cssSelector("div.page-content input[name=max_file_size]"));
-        ((JavascriptExecutor) wd).executeScript("arguments[0].setAttribute('value','"+bug.getFile().getAbsolutePath()+"')", box);
-//        box.sendKeys(bug.getFile().getAbsolutePath());
-        //wd.findElement(By.cssSelector("div.page-content div.dropzone.center.dz-clickable")).sendKeys(bug.getFile().getAbsolutePath());
-        wd.findElement(By.cssSelector("div.page-content input[type=submit]")).click();
-    }
 }

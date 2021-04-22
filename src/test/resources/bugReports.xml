@@ -1,0 +1,17 @@
+<list>
+  <BugReport>
+    <Title>Bug title 1619117010</Title>
+    <Description>Description 1619117010</Description>
+    <file>/home/lukasz/Devel/mantisbt-java/src/test/resources/ok.jpeg</file>
+  </BugReport>
+  <BugReport>
+    <Title>Bug title 3238234020</Title>
+    <Description>Description 1619117010</Description>
+    <file>/home/lukasz/Devel/mantisbt-java/src/test/resources/ok.jpeg</file>
+  </BugReport>
+  <BugReport>
+    <Title>Bug title 4857351030</Title>
+    <Description>Description 1619117010</Description>
+    <file>/home/lukasz/Devel/mantisbt-java/src/test/resources/ok.jpeg</file>
+  </BugReport>
+</list>

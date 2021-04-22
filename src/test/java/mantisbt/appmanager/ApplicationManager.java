@@ -15,6 +15,7 @@ public class ApplicationManager {
     SessionHelper session;
     NavigationHelper navigation;
     ProjectHelper project;
+    BugHelper bugReport;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -35,6 +36,7 @@ public class ApplicationManager {
         session = new SessionHelper(wd);
         navigation = new NavigationHelper(wd);
         project = new ProjectHelper(wd);
+        bugReport = new BugHelper(wd);
 //        session.login("administrator", "root");
     }
 
@@ -52,7 +54,11 @@ public class ApplicationManager {
     public ProjectHelper project() {
         return project;
     }
+
+    public BugHelper bugReport() { return bugReport; }
+
 }
+
 
 
 
