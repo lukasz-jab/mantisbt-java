@@ -3,15 +3,19 @@ package mantisbt.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Properties;
+
 public class NavigationHelper {
     private WebDriver wd;
+    private Properties properties;
 
-    public NavigationHelper(WebDriver wd) {
+    public NavigationHelper(WebDriver wd, Properties properties) {
         this.wd = wd;
+        this.properties = properties;
     }
 
     public void openHome() {
-        wd.get("http://127.0.0.1/mantisbt-2.25.0/");
+        wd.get(properties.getProperty("web.baseUrl"));
     }
 
     public void openBugReportPage() {

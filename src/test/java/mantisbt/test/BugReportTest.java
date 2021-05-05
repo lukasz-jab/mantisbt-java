@@ -11,6 +11,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 public class BugReportTest extends TestBase {
@@ -62,8 +63,12 @@ public class BugReportTest extends TestBase {
     }
 
     @Test(dataProvider = "jsonValidBugs")
-    public void testBugReport(BugReport bugReport) {
-        app.session().login("lukasz", "luk");
+    public void testBugReport(BugReport bugReport) throws IOException {
+        Properties properties = new Properties();
+        String target = System.getProperty("target", "local");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
+        app.session().login(properties.getProperty("web.userLogin"), properties.getProperty("web.userPassword"));
 //        File photo = new File("src/test/resources/ok.jpeg");
 //        BugReport bugReport = new BugReport().withTitle("Title " + Instant.now().getEpochSecond())
 //                .withDescription("Description " + Instant.now()).withFile(photo);

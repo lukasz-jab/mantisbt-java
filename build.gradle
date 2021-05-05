@@ -19,10 +19,22 @@ task testBugs(type: Test) {
     useTestNG {
         suites 'src/test/resources/testng-bugs.xml'
     }
+    if (project.hasProperty("browser")) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty("target")) {
+        systemProperty 'target', "${target}"
+    }
 }
 
 task testProjects(type: Test) {
     useTestNG {
         suites 'src/test/resources/testng-projects.xml'
+    }
+    if (project.hasProperty("browser")) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty("target")) {
+        systemProperty 'target', "${target}"
     }
 }

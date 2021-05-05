@@ -5,7 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.util.Hashtable;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
@@ -16,12 +19,16 @@ public class ApplicationManager {
     NavigationHelper navigation;
     ProjectHelper project;
     BugHelper bugReport;
+    Properties properties;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
+        properties = new Properties();
     }
 
-    public void init() {
+    public void init() throws IOException {
+        String target = System.getProperty("target", "local");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
         if (browser.equals("firefox")) {
             wd = new FirefoxDriver();
             System.out.println(((HasCapabilities) wd).getCapabilities());
@@ -33,11 +40,11 @@ public class ApplicationManager {
         }
         wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         wd.manage().window().maximize();
-        session = new SessionHelper(wd);
-        navigation = new NavigationHelper(wd);
+        session = new SessionHelper(wd, properties);
+        navigation = new NavigationHelper(wd, properties);
         project = new ProjectHelper(wd);
         bugReport = new BugHelper(wd);
-//        session.login("administrator", "root");
+        //session.login("administrator", "root");
     }
 
     public void stop() {
