@@ -11,7 +11,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
 import java.util.stream.Collectors;
 
 public class BugReportTest extends TestBase {
@@ -63,11 +62,7 @@ public class BugReportTest extends TestBase {
     }
 
     @Test(dataProvider = "jsonValidBugs")
-    public void testBugReport(BugReport bugReport) throws IOException {
-        Properties properties = new Properties();
-        String target = System.getProperty("target", "local");
-        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-
+    public void testBugReport(BugReport bugReport) {
         app.session().login(properties.getProperty("web.userLogin"), properties.getProperty("web.userPassword"));
 //        File photo = new File("src/test/resources/ok.jpeg");
 //        BugReport bugReport = new BugReport().withTitle("Title " + Instant.now().getEpochSecond())
@@ -75,14 +70,4 @@ public class BugReportTest extends TestBase {
         app.navigation().openBugReportPage();
         app.bugReport().createBugReport(bugReport);
     }
-
-    @Test(enabled = false)
-    public void testPath() {
-        File cDir = new File(".");
-        System.out.println(cDir.getAbsolutePath());
-        File photo = new File("src/test/resources/ok.jpeg");
-        System.out.println(photo.getAbsolutePath());
-        System.out.println(photo.exists());
-    }
-
 }
