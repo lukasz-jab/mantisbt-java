@@ -15,8 +15,14 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
 }
 
-test {
+task testBugs(type: Test) {
     useTestNG {
-        suites 'src/test/resources/testng.xml'
+        suites 'src/test/resources/testng-bugs.xml'
+    }
+}
+
+task testProjects(type: Test) {
+    useTestNG {
+        suites 'src/test/resources/testng-projects.xml'
     }
 }
