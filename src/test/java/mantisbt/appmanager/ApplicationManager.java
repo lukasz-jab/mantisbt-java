@@ -4,6 +4,7 @@ import org.openqa.selenium.HasCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.FileReader;
@@ -20,6 +21,7 @@ public class ApplicationManager {
     ProjectHelper project;
     BugHelper bugReport;
     Properties properties;
+    WebDriverWait wait;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -39,11 +41,14 @@ public class ApplicationManager {
             System.out.println("Unrecognized browser");
         }
         wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        wait = new WebDriverWait(wd, 3);
+        wd.manage().timeouts();
         wd.manage().window().maximize();
-        session = new SessionHelper(wd, properties);
+        session = new SessionHelper(wd, wait);
         navigation = new NavigationHelper(wd, properties);
         project = new ProjectHelper(wd);
         bugReport = new BugHelper(wd);
+        wd.get(properties.getProperty("web.baseUrl"));
         //session.login("administrator", "root");
     }
 

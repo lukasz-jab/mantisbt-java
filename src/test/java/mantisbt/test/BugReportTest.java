@@ -69,5 +69,6 @@ public class BugReportTest extends TestBase {
 //                .withDescription("Description " + Instant.now()).withFile(photo);
         app.navigation().openBugReportPage();
         app.bugReport().createBugReport(bugReport);
+        app.session().logout();
     }
 }
