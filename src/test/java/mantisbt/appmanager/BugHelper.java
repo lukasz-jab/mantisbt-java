@@ -13,6 +13,9 @@ public class BugHelper {
         this.wd = wd;
     }
     public void createBugReport(BugReport bug) {
+        if (wd.findElements(By.cssSelector("div#select-project-div form#select-project-form input[type=submit]")).size() > 0) {
+            wd.findElement(By.cssSelector("div#select-project-div form#select-project-form input[type=submit]")).click();
+        }
         wd.findElement(By.cssSelector("div.page-content input#summary")).sendKeys(bug.getTitle());
         wd.findElement(By.cssSelector("div.page-content textarea#description")).sendKeys(bug.getDescription());
 

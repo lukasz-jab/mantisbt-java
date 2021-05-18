@@ -35,7 +35,7 @@ public class ProjectHelper {
         webElProjects = wd.findElements(By.cssSelector("div.col-md-12.col-xs-12 div.widget-body tbody tr td a"));
         for (WebElement project : webElProjects) {
             projects.add(new Project(project.getText(), Integer.parseInt(slice_start(project.getAttribute("href")
-                    , 70))));
+                    ,70))));
         }
         return projects;
     }
