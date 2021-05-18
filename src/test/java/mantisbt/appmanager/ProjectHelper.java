@@ -48,6 +48,9 @@ public class ProjectHelper {
 
     public String slice_start(String s, int startIndex) {
         if (startIndex < 0) startIndex = s.length() + startIndex;
+        if (System.getProperty("target").equals("remote")) {
+            startIndex = startIndex +3;
+        }
         return s.substring(startIndex);
     }
 
